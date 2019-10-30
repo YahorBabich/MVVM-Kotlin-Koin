@@ -8,8 +8,7 @@ import android.util.Log
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
- * A lifecycle-aware observable that sends only new updates after subscription, used for events like
- * navigation and Snackbar messages.
+ * A lifecycle-aware observable that sends only new updates after subscription.
  *
  *
  * This avoids a common problem with events: on configuration change (like rotation) an update
@@ -19,18 +18,12 @@ import java.util.concurrent.atomic.AtomicBoolean
  *
  * Note that only one observer is going to be notified of changes.
  */
-class SingleLiveEvent<T> : MutableLiveData<T>() {
+class SimpleLiveEvent<T> : MutableLiveData<T>() {
 
     private val pending = AtomicBoolean(false)
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
-
-        if (hasActiveObservers()) {
-            Log.w(TAG, "Multiple observers registered but only one will be notified of changes.")
-        }
-
-        // Observe the internal MutableLiveData
         super.observe(owner, Observer<T> { t ->
             if (pending.compareAndSet(true, false)) {
                 observer.onChanged(t)
@@ -50,9 +43,5 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     @MainThread
     fun call() {
         value = null
-    }
-
-    companion object {
-        private const val TAG = "SingleLiveEvent"
     }
 }

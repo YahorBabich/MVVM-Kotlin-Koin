@@ -9,5 +9,5 @@ data class DailyForecastModel(
     val temperatureHigh: String
 ) {
     val id = UUID.randomUUID().toString()
-    val temperatureString = "$temperatureLow°C - $temperatureHigh°C"
+    val temperature = "$temperatureLow°C - $temperatureHigh°C"
 }

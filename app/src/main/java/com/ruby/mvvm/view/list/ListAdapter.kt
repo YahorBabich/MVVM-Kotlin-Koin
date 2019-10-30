@@ -1,4 +1,4 @@
-package com.ruby.mvvm.view.result
+package com.ruby.mvvm.view.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ruby.mvvm.R
 import com.ruby.mvvm.model.data.DailyForecastModel
 
-class ResultListAdapter(
+class ListAdapter(
     var list: List<DailyForecastModel>,
     private val onClick: (DailyForecastModel) -> Unit
-) : RecyclerView.Adapter<ResultListAdapter.WeatherResultHolder>() {
+) : RecyclerView.Adapter<ListAdapter.WeatherResultHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherResultHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
@@ -34,7 +34,7 @@ class ResultListAdapter(
         fun display(dailyForecastModel: DailyForecastModel, onClick: (DailyForecastModel) -> Unit) {
             weatherItemLayout.setOnClickListener { onClick(dailyForecastModel) }
             weatherItemForecast.text = dailyForecastModel.forecastString
-            weatherItemTemp.text = dailyForecastModel.temperatureString
+            weatherItemTemp.text = dailyForecastModel.temperature
         }
     }
 }

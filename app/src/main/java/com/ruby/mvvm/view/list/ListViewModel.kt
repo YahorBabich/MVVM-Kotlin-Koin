@@ -1,29 +1,30 @@
-package com.ruby.mvvm.view.result
+package com.ruby.mvvm.view.list
 
 import androidx.lifecycle.MutableLiveData
 import com.ruby.mvvm.model.data.ResultSelectEvent
-import com.ruby.mvvm.model.data.ResultUIModel
-import com.ruby.mvvm.repository.WeatherRepository
+import com.ruby.mvvm.model.data.ResultModel
+import com.ruby.mvvm.repository.local.WeatherRepository
 import com.ruby.mvvm.util.rx.SchedulerProvider
 import com.ruby.mvvm.util.ext.with
 import com.ruby.mvvm.view.BaseViewModel
-import com.ruby.mvvm.view.SingleLiveEvent
+import com.ruby.mvvm.view.SimpleLiveEvent
 
-class ResultViewModel(
+class ListViewModel(
     private val weatherRepository: WeatherRepository,
     private val scheduler: SchedulerProvider
 ) : BaseViewModel() {
 
-    val selectEvent = SingleLiveEvent<ResultSelectEvent>()
-    val uiData = MutableLiveData<ResultUIModel>()
+    val selectEvent = SimpleLiveEvent<ResultSelectEvent>()
+    val uiData = MutableLiveData<ResultModel>()
 
     fun getWeatherList() {
         launch {
-            weatherRepository.getWeather().with(scheduler)
+            weatherRepository.getWeather()
+                .with(scheduler)
                 .subscribe({ list ->
-                    uiData.value = ResultUIModel(list)
+                    uiData.value = ResultModel(list)
                 }, { e ->
-                    uiData.value = ResultUIModel(error = e)
+                    uiData.value = ResultModel(error = e)
                 })
         }
     }
