@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -40,8 +38,8 @@ dependencies {
 
     // Koin
     implementation "org.koin:koin-android-architecture:$koin_version"
-/*    testImplementation "org.koin:koin-test:$koin_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"*/
+    //    testImplementation "org.koin:koin-test:$koin_version"
+    //   testImplementation "org.mockito:mockito-core:$mockito_version"
 
     // Anko
     implementation "org.jetbrains.anko:anko-commons:0.10.4"
@@ -61,7 +59,7 @@ dependencies {
 
     // ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-  //  testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    //  testImplementation 'androidx.arch.core:core-testing:2.1.0'
 
     // Rx
     implementation "io.reactivex.rxjava2:rxjava:2.2.13"
