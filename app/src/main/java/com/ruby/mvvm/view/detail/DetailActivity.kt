@@ -14,7 +14,6 @@ import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
-    // Get all needed data
     private val address by argument<String>(ARG_ADDRESS)
     private val now by argument<Date>(ARG_WEATHER_DATE)
     private val id by argument<String>(ARG_WEATHER_ITEM_ID)
@@ -35,7 +34,6 @@ class DetailActivity : AppCompatActivity() {
 
     fun displayDetail(weather: DailyForecastModel) {
         weatherTitle.text = getString(R.string.weather_title).format(address, now)
-        weatherItemIcon.text = weather.icon
         weatherItemForecast.text = weather.forecastString
         weatherItemTemp.text = weather.temperatureString
     }

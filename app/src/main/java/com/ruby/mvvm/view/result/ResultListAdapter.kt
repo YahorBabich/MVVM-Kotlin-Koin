@@ -4,9 +4,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.joanzapata.iconify.widget.IconTextView
 import com.ruby.mvvm.R
 import com.ruby.mvvm.model.data.DailyForecastModel
 
@@ -31,12 +31,10 @@ class ResultListAdapter(
         private val weatherItemLayout = item.findViewById<LinearLayout>(R.id.weatherItemLayout)
         private val weatherItemForecast = item.findViewById<TextView>(R.id.weatherItemForecast)
         private val weatherItemTemp = item.findViewById<TextView>(R.id.weatherItemTemp)
-        private val weatherItemIcon = item.findViewById<IconTextView>(R.id.weatherItemIcon)
 
         fun display(dailyForecastModel: DailyForecastModel, onClick: (DailyForecastModel) -> Unit) {
             weatherItemLayout.setOnClickListener { onClick(dailyForecastModel) }
             weatherItemForecast.text = dailyForecastModel.forecastString
-            weatherItemIcon.text = dailyForecastModel.icon
             weatherItemTemp.text = dailyForecastModel.temperatureString
         }
     }
