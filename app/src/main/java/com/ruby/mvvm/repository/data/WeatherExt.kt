@@ -53,7 +53,8 @@ private fun getWeatherCode(icon: String): String {
     }
 }
 
-fun Weather.getDailyForecasts(): List<DailyForecastModel> = forecast?.simpleforecast?.forecastday.orEmpty()
+fun Weather.getDailyForecasts(): List<DailyForecastModel> =
+    forecast?.simpleforecast?.forecastday.orEmpty()
         .map { f ->
             DailyForecastModel(
                 f.conditions!!,

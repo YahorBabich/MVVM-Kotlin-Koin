@@ -12,9 +12,6 @@ import com.ruby.mvvm.view.Arguments.ARG_WEATHER_ITEM_ID
 import org.koin.android.architecture.ext.viewModel
 import java.util.*
 
-/**
- * Weather Detail View
- */
 class DetailActivity : AppCompatActivity() {
 
     // Get all needed data

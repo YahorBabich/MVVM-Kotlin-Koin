@@ -37,26 +37,29 @@ class ResultActivity : AppCompatActivity() {
 
         // Launch fragments
         val weatherResultTitleFragment = ResultHeaderFragment()
-                .withArguments(ARG_WEATHER_DATE to date,
-                        ARG_ADDRESS to address)
+            .withArguments(
+                ARG_WEATHER_DATE to date,
+                ARG_ADDRESS to address
+            )
 
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.weather_title, weatherResultTitleFragment)
-                .commit()
+            .beginTransaction()
+            .replace(R.id.weather_title, weatherResultTitleFragment)
+            .commit()
 
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.weather_list, ResultListFragment())
-                .commit()
+            .beginTransaction()
+            .replace(R.id.weather_list, ResultListFragment())
+            .commit()
 
     }
 
     fun onWeatherSelected(id: String) {
         startActivity<DetailActivity>(
-                ARG_WEATHER_DATE to date,
-                ARG_ADDRESS to address,
-                ARG_WEATHER_ITEM_ID to id)
+            ARG_WEATHER_DATE to date,
+            ARG_ADDRESS to address,
+            ARG_WEATHER_ITEM_ID to id
+        )
     }
 
     fun displayError(error: Throwable?) {

@@ -10,7 +10,7 @@ import java.io.Serializable
 /**
  * Start an Activity for given class T and allow to work on intent with "run" lambda function
  */
-fun androidx.fragment.app.Fragment.withArguments(vararg arguments: Pair<String, Serializable>): androidx.fragment.app.Fragment {
+fun Fragment.withArguments(vararg arguments: Pair<String, Serializable>): androidx.fragment.app.Fragment {
     val bundle = Bundle()
     arguments.forEach { bundle.putSerializable(it.first, it.second) }
     this.arguments = bundle
@@ -20,23 +20,28 @@ fun androidx.fragment.app.Fragment.withArguments(vararg arguments: Pair<String, 
 /**
  * Retrieve property from intent
  */
-fun <T : Any> androidx.fragment.app.FragmentActivity.argument(key: String) = lazy { intent.extras?.get(key) as T }
+fun <T : Any> FragmentActivity.argument(key: String) =
+    lazy { intent.extras?.get(key) as T }
 
 /**
  * Retrieve property with default value from intent
  */
-fun <T : Any> androidx.fragment.app.FragmentActivity.argument(key: String, defaultValue: T? = null) = lazy {
+fun <T : Any> FragmentActivity.argument(
+    key: String,
+    defaultValue: T? = null
+) = lazy {
     intent.extras?.get(key) as? T ?: defaultValue
 }
 
 /**
  * Retrieve property from intent
  */
-fun <T : Any> androidx.fragment.app.Fragment.argument(key: String) = lazy { arguments?.get(key) as T }
+fun <T : Any> Fragment.argument(key: String) =
+    lazy { arguments?.get(key) as T }
 
 /**
  * Retrieve property with default value from intent
  */
-fun <T : Any> androidx.fragment.app.Fragment.argument(key: String, defaultValue: T? = null) = lazy {
-    arguments?.get(key)  as? T ?: defaultValue
+fun <T : Any> Fragment.argument(key: String, defaultValue: T? = null) = lazy {
+    arguments?.get(key) as? T ?: defaultValue
 }

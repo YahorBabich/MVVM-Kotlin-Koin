@@ -16,7 +16,11 @@ class ResultHeaderFragment : androidx.fragment.app.Fragment() {
     val date: Date by argument(ARG_WEATHER_DATE)
     val address: String by argument(ARG_ADDRESS)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.fragment_weather_title, container, false) as ViewGroup
     }
 
