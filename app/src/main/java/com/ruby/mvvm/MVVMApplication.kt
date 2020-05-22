@@ -9,7 +9,6 @@ class MVVMApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         startKoin(this, weatherApp + localAndroidDatasourceModule)
     }
 }
