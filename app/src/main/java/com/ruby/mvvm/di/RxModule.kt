@@ -5,6 +5,5 @@ import com.ruby.mvvm.util.rx.SchedulerProvider
 import org.koin.dsl.module
 
 val rxModule = module {
-    // provided components
-    single { ApplicationSchedulerProvider() as SchedulerProvider }
+    single<SchedulerProvider> { ApplicationSchedulerProvider() }
 }

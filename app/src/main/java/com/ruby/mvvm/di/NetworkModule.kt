@@ -1,6 +1,5 @@
 package com.ruby.mvvm.di
 
-import com.ruby.mvvm.di.DatasourceProperties.SERVER_URL
 import com.ruby.mvvm.repository.WeatherDatasource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,12 +11,13 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module {
     // provided web components
-    single { createOkHttpClient() }
+    //factory { createOkHttpClient() }
 
     // Fill property
-    single { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
+   // factory { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
 }
 
+/*
 object DatasourceProperties {
     const val SERVER_URL = "SERVER_URL"
 }
@@ -38,4 +38,4 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
     return retrofit.create(T::class.java)
-}
+}*/

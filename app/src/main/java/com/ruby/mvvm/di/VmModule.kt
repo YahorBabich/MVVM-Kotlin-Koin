@@ -9,16 +9,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val vmModule = module {
-
-    // ViewModel for Search View
     viewModel { SearchViewModel(get(), get()) }
-
-    // ViewModel for Result View
     viewModel { ListViewModel(get(), get()) }
-
-    // ViewModel for Detail View
     viewModel { DetailViewModel(get(), get()) }
 
     // Weather Data Repository
-    single { WeatherRepositoryImpl(get()) as WeatherRepository }
+    single<WeatherRepository> { WeatherRepositoryImpl(get()) }
 }

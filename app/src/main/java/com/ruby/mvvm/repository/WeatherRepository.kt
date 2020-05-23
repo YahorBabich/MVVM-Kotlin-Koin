@@ -9,7 +9,7 @@ import io.reactivex.Single
 
 class WeatherRepositoryImpl(private val weatherDatasource: WeatherDatasource) : WeatherRepository {
 
-    val weatherCache = arrayListOf<DailyForecastModel>()
+    private val weatherCache = arrayListOf<DailyForecastModel>()
 
     override fun getSelectedWeatherDetail(id: String) =
         Single.just(weatherCache.first { it.id == id })

@@ -8,6 +8,6 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val storageModule = module {
-    single { AndroidJsonReader(androidApplication()) as JsonReader }
-    single { LocalDataSource(get()) as WeatherDatasource }
+    single<JsonReader> { AndroidJsonReader(androidApplication()) }
+    single<WeatherDatasource> { LocalDataSource(get()) }
 }
