@@ -11,7 +11,7 @@ import com.ruby.mvvm.view.Arguments.ARG_WEATHER_ITEM_ID
 import com.ruby.mvvm.view.BaseActivity
 import com.ruby.mvvm.view.detail.model.DetailModel
 import kotlinx.android.synthetic.main.activity_weather_detail.*
-import org.koin.android.architecture.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class DetailActivity : BaseActivity() {
@@ -20,7 +20,7 @@ class DetailActivity : BaseActivity() {
     private val now by argument<Date>(ARG_WEATHER_DATE)
     private val id by argument<String>(ARG_WEATHER_ITEM_ID)
 
-    private val viewModel: DetailViewModel by viewModel { mapOf("id" to id) }
+    private val viewModel: DetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

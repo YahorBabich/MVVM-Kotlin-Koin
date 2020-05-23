@@ -10,8 +10,8 @@ import com.ruby.mvvm.view.list.ListActivity
 import com.ruby.mvvm.view.search.model.SearchModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import org.koin.android.architecture.ext.viewModel
 import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchActivity : BaseActivity() {
 

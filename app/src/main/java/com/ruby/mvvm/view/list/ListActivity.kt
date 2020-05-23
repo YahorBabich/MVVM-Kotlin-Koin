@@ -14,7 +14,7 @@ import com.ruby.mvvm.view.list.model.ForwardModel
 import com.ruby.mvvm.view.list.model.ListModel
 import kotlinx.android.synthetic.main.activity_weather.*
 import org.jetbrains.anko.startActivity
-import org.koin.android.architecture.ext.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class ListActivity : BaseActivity() {

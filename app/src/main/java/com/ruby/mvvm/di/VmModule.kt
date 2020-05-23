@@ -5,11 +5,10 @@ import com.ruby.mvvm.repository.local.WeatherRepository
 import com.ruby.mvvm.view.detail.DetailViewModel
 import com.ruby.mvvm.view.list.ListViewModel
 import com.ruby.mvvm.view.search.SearchViewModel
-import org.koin.android.architecture.ext.viewModel
-import org.koin.dsl.module.applicationContext
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-
-val vmModule = applicationContext {
+val vmModule = module {
 
     // ViewModel for Search View
     viewModel { SearchViewModel(get(), get()) }
@@ -18,8 +17,8 @@ val vmModule = applicationContext {
     viewModel { ListViewModel(get(), get()) }
 
     // ViewModel for Detail View
-    viewModel { params -> DetailViewModel(params["id"], get(), get()) }
+    viewModel { DetailViewModel(get(), get()) }
 
     // Weather Data Repository
-    bean { WeatherRepositoryImpl(get()) as WeatherRepository }
+    single { WeatherRepositoryImpl(get()) as WeatherRepository }
 }

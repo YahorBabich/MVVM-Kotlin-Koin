@@ -37,7 +37,11 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Koin
-    implementation "org.koin:koin-android-architecture:$koin_version"
+    // Koin AndroidX Scope feature
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    //implementation "org.koin:koin-android-architecture:2.1.5"
     //    testImplementation "org.koin:koin-test:$koin_version"
     //   testImplementation "org.mockito:mockito-core:$mockito_version"
 

@@ -8,7 +8,6 @@ import com.ruby.mvvm.view.BaseViewModel
 import com.ruby.mvvm.view.detail.model.DetailModel
 
 class DetailViewModel(
-    val id: String,
     private val weatherRepository: WeatherRepository,
     private val scheduler: SchedulerProvider
 ) : BaseViewModel() {

@@ -4,18 +4,18 @@ import com.ruby.mvvm.di.DatasourceProperties.SERVER_URL
 import com.ruby.mvvm.repository.WeatherDatasource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.dsl.module.applicationContext
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val networkModule = applicationContext {
+val networkModule = module {
     // provided web components
-    bean { createOkHttpClient() }
+    single { createOkHttpClient() }
 
     // Fill property
-    bean { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
+    single { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
 }
 
 object DatasourceProperties {
