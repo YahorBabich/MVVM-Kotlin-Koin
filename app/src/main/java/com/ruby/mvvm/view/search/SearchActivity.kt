@@ -2,10 +2,12 @@ package com.ruby.mvvm.view.search
 
 import android.os.Bundle
 import com.ruby.mvvm.R
+import com.ruby.mvvm.extension.observe
 import com.ruby.mvvm.view.Arguments.ARG_ADDRESS
 import com.ruby.mvvm.view.Arguments.ARG_WEATHER_DATE
 import com.ruby.mvvm.view.BaseActivity
 import com.ruby.mvvm.view.list.ListActivity
+import com.ruby.mvvm.view.search.model.SearchModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.koin.android.architecture.ext.viewModel
@@ -23,15 +25,19 @@ class SearchActivity : BaseActivity() {
             viewModel.searchWeather(getSearchText())
         }
 
-        viewModel.searchEvent.observe(this, androidx.lifecycle.Observer { searchEvent ->
-            if (searchEvent != null) {
-                if (searchEvent.isSuccess) {
-                    onWeatherSuccess()
-                } else if (searchEvent.error != null) {
-                    displayError(searchEvent.error)
-                }
+        viewModel.apply {
+            observe(this.searchEvent, ::display)
+        }
+    }
+
+    private fun display(model: SearchModel?) {
+        model?.apply {
+            if (isSuccess) {
+                onWeatherSuccess()
+            } else if (error != null) {
+                displayError(error)
             }
-        })
+        }
     }
 
     private fun getSearchText() = searchEditText.text.trim().toString()
@@ -42,4 +48,14 @@ class SearchActivity : BaseActivity() {
             ARG_ADDRESS to getSearchText()
         )
     }
+
+/*    companion object {
+        private val EXTRA_FOO = "foo"
+
+        fun start(caller: Context, bar: String){
+            val intent = Intent(caller, MyActivity::class.java)
+            intent.putExtra(EXTRA_FOO, bar)
+            caller.startActivity(intent)
+        }
+    }*/
 }

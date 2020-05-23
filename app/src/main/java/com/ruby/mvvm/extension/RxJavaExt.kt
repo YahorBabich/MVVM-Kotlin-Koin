@@ -1,8 +1,8 @@
 package com.ruby.mvvm.extension
 
+import com.ruby.mvvm.util.rx.SchedulerProvider
 import io.reactivex.Completable
 import io.reactivex.Single
-import com.ruby.mvvm.util.rx.SchedulerProvider
 
 /**
  * Use SchedulerProvider configuration for Single

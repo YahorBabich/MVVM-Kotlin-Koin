@@ -1,10 +1,10 @@
 package com.ruby.mvvm.repository.local
 
-import io.reactivex.Single
 import com.ruby.mvvm.repository.WeatherDatasource
 import com.ruby.mvvm.repository.data.geocode.Geocode
 import com.ruby.mvvm.repository.data.geocode.Location
 import com.ruby.mvvm.repository.data.weather.Weather
+import io.reactivex.Single
 
 /**
  * Read json files and render weather data
@@ -20,7 +20,7 @@ class LocalDataSource(val jsonReader: JsonReader) : WeatherDatasource {
 
     private fun cityFromLocation(lat: Double?, lng: Double?): String {
         return cities.filterKeys { it.lat == lat && it.lng == lng }.values.firstOrNull()
-                ?: DEFAULT_CITY
+            ?: DEFAULT_CITY
     }
 
     override fun geocode(address: String): Single<Geocode> {
