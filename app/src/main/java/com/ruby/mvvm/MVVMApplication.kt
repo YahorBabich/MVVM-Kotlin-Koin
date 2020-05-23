@@ -2,10 +2,7 @@ package com.ruby.mvvm
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import com.ruby.mvvm.di.networkModule
-import com.ruby.mvvm.di.rxModule
-import com.ruby.mvvm.di.storageModule
-import com.ruby.mvvm.di.vmModule
+import com.ruby.mvvm.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
@@ -20,7 +17,7 @@ class MVVMApplication : Application() {
             androidLogger()
             androidContext(this@MVVMApplication)
             androidFileProperties()
-            modules(listOf(vmModule, storageModule, rxModule, networkModule))
+            modules(listOf(vmModule, storageModule, rxModule, networkModule, databaseModules))
         }
 
         if (BuildConfig.DEBUG) {

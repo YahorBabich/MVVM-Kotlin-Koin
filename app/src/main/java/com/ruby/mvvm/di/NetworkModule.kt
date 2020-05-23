@@ -19,6 +19,8 @@ val networkModule = module {
     factory { provideUserApi(get()) }
     factory { provideLoggingInterceptor() }
     single { provideRetrofit(get()) }
+
+    //   single { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -47,3 +49,12 @@ fun provideLoggingInterceptor(): HttpLoggingInterceptor {
 }
 
 fun provideUserApi(retrofit: Retrofit): UsersApi = retrofit.create(UsersApi::class.java)
+
+/*inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String): T {
+    val retrofit = Retrofit.Builder()
+        .baseUrl(url)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+    return retrofit.create(T::class.java)
+}*/
