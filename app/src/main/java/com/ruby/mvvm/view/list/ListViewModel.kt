@@ -5,7 +5,7 @@ import com.ruby.mvvm.model.data.ResultSelectEvent
 import com.ruby.mvvm.model.data.ResultModel
 import com.ruby.mvvm.repository.local.WeatherRepository
 import com.ruby.mvvm.util.rx.SchedulerProvider
-import com.ruby.mvvm.util.ext.with
+import com.ruby.mvvm.extension.with
 import com.ruby.mvvm.view.BaseViewModel
 import com.ruby.mvvm.view.SimpleLiveEvent
 

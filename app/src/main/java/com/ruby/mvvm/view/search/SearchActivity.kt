@@ -13,7 +13,7 @@ import java.util.*
 
 class SearchActivity : BaseActivity() {
 
-    val viewModel: SearchViewModel by viewModel()
+    private val viewModel: SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +34,9 @@ class SearchActivity : BaseActivity() {
         })
     }
 
-    fun getSearchText() = searchEditText.text.trim().toString()
+    private fun getSearchText() = searchEditText.text.trim().toString()
 
-    fun onWeatherSuccess() {
+    private fun onWeatherSuccess() {
         startActivity<ListActivity>(
             ARG_WEATHER_DATE to Date(),
             ARG_ADDRESS to getSearchText()
