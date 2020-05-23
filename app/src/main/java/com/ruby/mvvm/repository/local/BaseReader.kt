@@ -25,9 +25,11 @@ abstract class BaseReader : JsonReader {
         }.toMap() // direct to map
     }
 
-    override fun getGeocode(name: String): Geocode = gson.fromJson<Geocode>(readJsonFile(geocode_prefix + name + json_file), Geocode::class.java)
+    override fun getGeocode(name: String): Geocode =
+        gson.fromJson<Geocode>(readJsonFile(geocode_prefix + name + json_file), Geocode::class.java)
 
-    override fun getWeather(name: String): Weather = gson.fromJson<Weather>(readJsonFile(weather_prefix + name + json_file), Weather::class.java)
+    override fun getWeather(name: String): Weather =
+        gson.fromJson<Weather>(readJsonFile(weather_prefix + name + json_file), Weather::class.java)
 
     abstract fun getAllFiles(): List<String>
 

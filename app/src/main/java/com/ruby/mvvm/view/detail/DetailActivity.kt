@@ -1,8 +1,6 @@
 package com.ruby.mvvm.view.detail
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_weather_detail.*
 import com.ruby.mvvm.R
 import com.ruby.mvvm.model.data.DailyForecastModel
 import com.ruby.mvvm.util.ext.argument
@@ -10,6 +8,7 @@ import com.ruby.mvvm.view.Arguments.ARG_ADDRESS
 import com.ruby.mvvm.view.Arguments.ARG_WEATHER_DATE
 import com.ruby.mvvm.view.Arguments.ARG_WEATHER_ITEM_ID
 import com.ruby.mvvm.view.BaseActivity
+import kotlinx.android.synthetic.main.activity_weather_detail.*
 import org.koin.android.architecture.ext.viewModel
 import java.util.*
 

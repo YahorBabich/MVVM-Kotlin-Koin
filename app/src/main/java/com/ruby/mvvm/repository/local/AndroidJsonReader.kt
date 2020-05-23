@@ -15,10 +15,10 @@ class AndroidJsonReader(val application: Application) : BaseReader() {
         val buf = StringBuilder()
         val json = application.assets.open("json/" + jsonFile)
         BufferedReader(InputStreamReader(json, "UTF-8"))
-                .use {
-                    val list = it.lineSequence().toList()
-                    buf.append(list.joinToString("\n"))
-                }
+            .use {
+                val list = it.lineSequence().toList()
+                buf.append(list.joinToString("\n"))
+            }
 
         return buf.toString()
     }
