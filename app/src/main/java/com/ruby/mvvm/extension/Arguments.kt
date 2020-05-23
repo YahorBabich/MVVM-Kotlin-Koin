@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.ruby.mvvm.util.ext
+package com.ruby.mvvm.extension
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
