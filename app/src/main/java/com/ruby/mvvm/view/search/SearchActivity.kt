@@ -48,4 +48,14 @@ class SearchActivity : BaseActivity() {
             ARG_ADDRESS to getSearchText()
         )
     }
+
+/*    companion object {
+        private val EXTRA_FOO = "foo"
+
+        fun start(caller: Context, bar: String){
+            val intent = Intent(caller, MyActivity::class.java)
+            intent.putExtra(EXTRA_FOO, bar)
+            caller.startActivity(intent)
+        }
+    }*/
 }
