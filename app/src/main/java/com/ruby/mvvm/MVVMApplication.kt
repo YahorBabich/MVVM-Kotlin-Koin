@@ -1,6 +1,8 @@
 package com.ruby.mvvm
 
 import android.app.Application
+import com.facebook.stetho.Stetho
+import com.ruby.mvvm.di.networkModule
 import com.ruby.mvvm.di.rxModule
 import com.ruby.mvvm.di.storageModule
 import com.ruby.mvvm.di.vmModule
@@ -18,7 +20,16 @@ class MVVMApplication : Application() {
             androidLogger()
             androidContext(this@MVVMApplication)
             androidFileProperties()
-            modules(listOf(vmModule, storageModule, rxModule))
+            modules(listOf(vmModule, storageModule, rxModule, networkModule))
+        }
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initialize(
+                Stetho.newInitializerBuilder(this@MVVMApplication)
+                    .enableDumpapp(Stetho.defaultDumperPluginsProvider(this@MVVMApplication))
+                    .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this@MVVMApplication))
+                    .build()
+            )
         }
     }
 }
