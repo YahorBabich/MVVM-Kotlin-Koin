@@ -1,4 +1,4 @@
-package com.ruby.mvvm.util.ext
+package com.ruby.mvvm.extension
 
 import io.reactivex.Completable
 import io.reactivex.Single
