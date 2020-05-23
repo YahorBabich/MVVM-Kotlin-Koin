@@ -2,7 +2,7 @@ package com.ruby.mvvm.view.search
 
 import com.ruby.mvvm.model.data.SearchEvent
 import com.ruby.mvvm.repository.local.WeatherRepository
-import com.ruby.mvvm.util.ext.with
+import com.ruby.mvvm.extension.with
 import com.ruby.mvvm.util.rx.SchedulerProvider
 import com.ruby.mvvm.view.BaseViewModel
 import com.ruby.mvvm.view.SimpleLiveEvent
