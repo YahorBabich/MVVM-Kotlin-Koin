@@ -1,4 +1,4 @@
-package com.yahorb.mvvm.network
+package com.yahorb.mvvm.repository
 
 import com.yahorb.mvvm.model.data.User
 import io.reactivex.Observable

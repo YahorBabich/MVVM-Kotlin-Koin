@@ -1,11 +1,23 @@
 package com.yahorb.mvvm.repository.local
 
 import com.yahorb.mvvm.model.data.DailyForecastModel
-import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.disposables.Disposable
 
 interface WeatherRepository {
-    fun searchWeather(location: String): Completable
-    fun getWeather(): Single<List<DailyForecastModel>>
-    fun getSelectedWeatherDetail(id: String): Single<DailyForecastModel>
+    fun searchWeather(
+        location: String,
+        onSuccess: (List<DailyForecastModel>) -> Unit,
+        onError: (Throwable) -> Unit
+    ): Disposable
+
+    fun getSelectedWeatherDetail(
+        id: String,
+        onSuccess: (DailyForecastModel) -> Unit,
+        onError: (Throwable) -> Unit
+    ): Disposable
+
+    fun getWeather(
+        onSuccess: (List<DailyForecastModel>) -> Unit,
+        onError: (Throwable) -> Unit
+    ): Disposable
 }
