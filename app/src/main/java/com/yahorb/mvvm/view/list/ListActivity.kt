@@ -1,6 +1,7 @@
 package com.yahorb.mvvm.view.list
 
 import android.os.Bundle
+import android.view.View
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.observe
 import com.yahorb.mvvm.model.data.Artist
@@ -25,10 +26,13 @@ class ListActivity : BaseActivity() {
             observe(uiData, ::display)
         }
 
-        adapter = ListAdapter(onItemClicked())
-        weatherList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        weatherList.adapter = adapter
+        cta.setOnClickListener {
+            onBackPressed()
+        }
 
+        adapter = ListAdapter(onItemClicked())
+        list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        list.adapter = adapter
         viewModel.getITuneList()
     }
 
@@ -36,15 +40,29 @@ class ListActivity : BaseActivity() {
         model?.apply {
             if (error != null) {
                 onError(error)
-            }
-            artists?.apply {
-                displayArtists(this)
+            } else {
+                if (artists != null && artists.isNotEmpty()) {
+                    displayArtists(artists)
+                } else {
+                    displayEmptyList()
+                }
             }
         }
     }
 
     private fun displayArtists(artist: List<Artist>) {
+        list.visibility = View.VISIBLE
+        empty.visibility = View.GONE
+        label.visibility = View.GONE
+        cta.visibility = View.GONE
         adapter.update(artist)
+    }
+
+    private fun displayEmptyList() {
+        list.visibility = View.GONE
+        empty.visibility = View.VISIBLE
+        label.visibility = View.VISIBLE
+        cta.visibility = View.VISIBLE
     }
 
     private fun onItemClicked(): (Artist) -> Unit {

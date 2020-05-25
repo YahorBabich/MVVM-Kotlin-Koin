@@ -3,6 +3,7 @@ package com.yahorb.mvvm.view.search
 import android.util.Log
 import com.yahorb.mvvm.database.ArtistDao
 import com.yahorb.mvvm.extension.with
+import com.yahorb.mvvm.model.data.Artist
 import com.yahorb.mvvm.repository.local.ITuneRepository
 import com.yahorb.mvvm.util.rx.SchedulerProvider
 import com.yahorb.mvvm.view.BaseViewModel
@@ -18,23 +19,28 @@ class SearchViewModel(
     val searchEvent = SimpleLiveEvent<SearchModel>()
 
     fun search(term: String) {
-        var search = term
-        if (term.isEmpty()) {
-            search = "Jackson"
-        }
         launch {
-            repository.search(search, onSuccess = { term ->
-                launch {
-                    artistDao.insertAll(*term.results.toTypedArray()).with(scheduler).subscribe({
-                        Log.d(SearchViewModel::javaClass.name, "db was filled")
-                        searchEvent.value = SearchModel(true)
-                    }, {
-                        searchEvent.value = SearchModel(error = it)
-                    })
+            repository.search(term, onSuccess = { term ->
+                if (term.resultCount != 0 && term.results.isNotEmpty()) {
+                    insertAll(term.results)
+                } else {
+                    searchEvent.value = SearchModel(true)
                 }
             }, onError = {
                 searchEvent.value = SearchModel(error = it)
             })
+        }
+    }
+
+    private fun insertAll(list: List<Artist>) {
+        launch {
+            artistDao.insertAll(*list.toTypedArray()).with(scheduler)
+                .subscribe({
+                    Log.d(SearchViewModel::javaClass.name, "db was filled")
+                    searchEvent.value = SearchModel(true)
+                }, {
+                    searchEvent.value = SearchModel(error = it)
+                })
         }
     }
 
