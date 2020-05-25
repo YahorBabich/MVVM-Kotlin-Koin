@@ -10,7 +10,7 @@
         android:id="@+id/logo"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="100dp"
         android:background="@null"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
