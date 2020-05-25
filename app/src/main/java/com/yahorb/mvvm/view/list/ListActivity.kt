@@ -1,6 +1,7 @@
 package com.yahorb.mvvm.view.list
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.observe
@@ -21,6 +22,9 @@ class ListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         viewModel.apply {
             observe(uiData, ::display)
@@ -69,5 +73,12 @@ class ListActivity : BaseActivity() {
         return { artist ->
             startActivity<DetailActivity>(ARG_ARTIST_ITEM_ID to artist.artistId)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
