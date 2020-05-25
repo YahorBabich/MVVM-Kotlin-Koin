@@ -1,5 +1,6 @@
 package com.yahorb.mvvm.view.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.yahorb.mvvm.R
@@ -49,6 +50,7 @@ class DetailActivity : BaseActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun displayDetail(artist: Artist) {
         artist.apply {
             Glide.with(this@DetailActivity).load(artworkUrl100).into(image);
