@@ -24,13 +24,25 @@ class SearchViewModel(
         }
         launch {
             repository.search(search, onSuccess = { term ->
-                artistDao.insertAll(*term.results.toTypedArray()).with(scheduler).subscribe({
-                    Log.d(SearchViewModel::javaClass.name, "db was filled")
-                    searchEvent.value = SearchModel(true)
-                }, {
-                    searchEvent.value = SearchModel(error = it)
-                })
+                launch {
+                    artistDao.insertAll(*term.results.toTypedArray()).with(scheduler).subscribe({
+                        Log.d(SearchViewModel::javaClass.name, "db was filled")
+                        searchEvent.value = SearchModel(true)
+                    }, {
+                        searchEvent.value = SearchModel(error = it)
+                    })
+                }
             }, onError = {
+                searchEvent.value = SearchModel(error = it)
+            })
+        }
+    }
+
+    fun deleteAll() {
+        launch {
+            artistDao.deleteAll().with(scheduler).subscribe({
+                Log.d(SearchViewModel::javaClass.name, "db was deleted")
+            }, {
                 searchEvent.value = SearchModel(error = it)
             })
         }

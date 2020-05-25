@@ -18,4 +18,7 @@ interface ArtistDao {
 
     @Query("SELECT * FROM artist WHERE artistId=:id ")
     fun getByID(id: Int): Flowable<Artist>
+
+    @Query("DELETE FROM artist")
+    fun deleteAll(): Completable
 }

@@ -33,6 +33,11 @@ class SearchActivity : BaseActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.deleteAll()
+    }
+
     private fun display(model: SearchModel?) {
         model?.apply {
             if (isSuccess) {
