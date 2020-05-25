@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Custom Code -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding">
+
+    <TextView
+        android:id="@+id/collectionArtist"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collection_artist_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/collectionArtistValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/collectionArtist"
+        app:layout_constraintStart_toEndOf="@+id/collectionArtist"
+        app:layout_constraintTop_toTopOf="@+id/collectionArtist"
+        tools:text="collectionArtistValue" />
+
+    <TextView
+        android:id="@+id/censoredName"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collection_censored_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionArtist" />
+
+    <TextView
+        android:id="@+id/censoredValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/censoredName"
+        app:layout_constraintStart_toEndOf="@+id/censoredName"
+        app:layout_constraintTop_toTopOf="@+id/censoredName"
+        tools:text="censoredValue" />
+
+    <TextView
+        android:id="@+id/collectionExplicitness"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collection_explicitness"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/censoredName" />
+
+    <TextView
+        android:id="@+id/collectionExplicitnessValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/collectionExplicitness"
+        app:layout_constraintStart_toEndOf="@+id/collectionExplicitness"
+        app:layout_constraintTop_toTopOf="@+id/collectionExplicitness"
+        tools:text="collectionExplicitnessValue" />
+
+    <TextView
+        android:id="@+id/collectionName"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collection_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionExplicitness" />
+
+    <TextView
+        android:id="@+id/collectionValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/collectionName"
+        app:layout_constraintStart_toEndOf="@+id/collectionName"
+        app:layout_constraintTop_toTopOf="@+id/collectionName"
+        tools:text="collectionName" />
+
+    <TextView
+        android:id="@+id/collectionPrice"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collection_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionName" />
+
+    <TextView
+        android:id="@+id/collectionPriceValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/collectionPrice"
+        app:layout_constraintStart_toEndOf="@+id/collectionPrice"
+        app:layout_constraintTop_toTopOf="@+id/collectionPrice"
+        tools:text="collectionPrice" />
+
+    <TextView
+        android:id="@+id/country"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionPrice" />
+
+    <TextView
+        android:id="@+id/countryValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        app:layout_constraintBottom_toBottomOf="@+id/country"
+        app:layout_constraintStart_toEndOf="@+id/country"
+        app:layout_constraintTop_toTopOf="@+id/country"
+        tools:text="country" />
+
+    <TextView
+        android:id="@+id/releaseDate"
+        style="@style/ArtistTextItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/release_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryValue" />
+
+    <TextView
+        android:id="@+id/releaseDateValue"
+        style="@style/ArtistTextItemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+        app:layout_constraintStart_toEndOf="@+id/releaseDate"
+        app:layout_constraintTop_toTopOf="@+id/releaseDate"
+        tools:text="releaseDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

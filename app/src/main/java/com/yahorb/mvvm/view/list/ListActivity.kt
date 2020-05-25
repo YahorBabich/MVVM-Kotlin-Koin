@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.observe
 import com.yahorb.mvvm.model.data.Artist
-import com.yahorb.mvvm.view.Arguments.ARG_ARTIST_ITEM_ID
+import com.yahorb.mvvm.util.Constants.ARG_ARTIST_ITEM_ID
 import com.yahorb.mvvm.view.BaseActivity
 import com.yahorb.mvvm.view.detail.DetailActivity
 import com.yahorb.mvvm.view.list.model.ListModel

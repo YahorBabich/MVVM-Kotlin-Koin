@@ -1,4 +1,18 @@
 <resources>
-    <string name="app_name">MVVM Skeleton</string>
-    <string name="weather_title">Weather for %1$s at %2$s</string>
+    <string name="app_name">iTune Skeleton</string>
+    <string name="collection_artist_name">Artist Name:</string>
+    <string name="collection_censored_name">Censored Name:</string>
+    <string name="collection_explicitness">Explicitness:</string>
+    <string name="collection_name">Collection Name:</string>
+    <string name="collection_price">Collection Price:</string>
+    <string name="country">Country:</string>
+    <string name="currency">Currency:</string>
+    <string name="disc_count">Disc Count:</string>
+    <string name="disc_number">Disc Number:</string>
+    <string name="kind">Kind:</string>
+    <string name="primary_genre_name">Primary Genre Name:</string>
+    <string name="release_date">Release Date:</string>
+    <string name="track_censored_name">Track Censored Name:</string>
+    <string name="track_explicitness">Track Explicitness:</string>
+    <string name="track_name">Track Name:</string>
 </resources>
