@@ -1,10 +1,11 @@
 package com.yahorb.mvvm.repository.local
 
 import com.yahorb.mvvm.model.data.DailyForecastModel
+import com.yahorb.mvvm.model.data.Term
 import io.reactivex.disposables.Disposable
 
-interface WeatherRepository {
-    fun searchWeather(
+interface ITuneRepository {
+    /*fun search(
         location: String,
         onSuccess: (List<DailyForecastModel>) -> Unit,
         onError: (Throwable) -> Unit
@@ -19,5 +20,9 @@ interface WeatherRepository {
     fun getWeather(
         onSuccess: (List<DailyForecastModel>) -> Unit,
         onError: (Throwable) -> Unit
-    ): Disposable
+    ): Disposable*/
+
+    fun search(term: String,
+               onSuccess: (Term) -> Unit,
+               onError: (Throwable) -> Unit): Disposable
 }

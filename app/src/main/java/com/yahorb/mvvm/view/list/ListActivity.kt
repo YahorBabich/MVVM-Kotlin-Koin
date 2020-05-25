@@ -19,7 +19,8 @@ import java.util.*
 
 class ListActivity : BaseActivity() {
 
-    private lateinit var weatherResultAdapter: ListAdapter
+    private lateinit var adapter: ListAdapter
+
     val date: Date by argument(ARG_WEATHER_DATE)
 
     private val viewModel: ListViewModel by viewModel()
@@ -33,20 +34,19 @@ class ListActivity : BaseActivity() {
             observe(selectEvent, ::next)
         }
 
-        weatherResultAdapter = ListAdapter(emptyList(), onItemClicked())
+        adapter = ListAdapter(emptyList(), onItemClicked())
         weatherList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        weatherList.adapter = weatherResultAdapter
+        weatherList.adapter = adapter
 
-        viewModel.getWeatherList()
+        viewModel.getITuneList()
     }
 
     private fun display(model: ListModel?) {
         model?.apply {
-            val weatherList = list
-            if (weatherList != weatherResultAdapter.list && weatherList.isNotEmpty()) {
-                displayWeather(weatherList)
+            if (list != adapter.list && list.isNotEmpty()) {
+                displayWeather(list)
             } else if (error != null) {
-                displayError(error)
+                onError(error)
             }
         }
     }
@@ -68,7 +68,7 @@ class ListActivity : BaseActivity() {
     }
 
     private fun displayWeather(weatherList: List<DailyForecastModel>) {
-        weatherResultAdapter.list = weatherList
-        weatherResultAdapter.notifyDataSetChanged()
+        adapter.list = weatherList
+        adapter.notifyDataSetChanged()
     }
 }

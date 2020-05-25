@@ -4,9 +4,9 @@ import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.yahorb.mvvm.BuildConfig
 import com.yahorb.mvvm.network.AuthInterceptor
 import com.yahorb.mvvm.network.BASE_URL
-import com.yahorb.mvvm.repository.UsersApi
-import com.yahorb.mvvm.repository.WeatherRepositoryImpl
-import com.yahorb.mvvm.repository.local.WeatherRepository
+import com.yahorb.mvvm.repository.ITunesAPI
+import com.yahorb.mvvm.repository.ITunesRepositoryImpl
+import com.yahorb.mvvm.repository.local.ITuneRepository
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,12 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 val networkModule = module {
     factory { AuthInterceptor() }
     factory { provideOkHttpClient(get(), get()) }
-    factory { provideUserApi(get()) }
+    factory { provideITunesApi(get()) }
     factory { provideLoggingInterceptor() }
     single { provideRetrofit(get()) }
 
     //   single { createWebService<WeatherDatasource>(get(), getProperty(SERVER_URL)) }
-    single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
+   // single<ITunesAPI> { provideITunesApi(get()) }
+    single<ITuneRepository> { ITunesRepositoryImpl(get(), get()) }
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -51,8 +52,8 @@ fun provideLoggingInterceptor(): HttpLoggingInterceptor {
     return logger
 }
 
-fun provideUserApi(retrofit: Retrofit): UsersApi = retrofit.create(
-    UsersApi::class.java
+fun provideITunesApi(retrofit: Retrofit): ITunesAPI = retrofit.create(
+    ITunesAPI::class.java
 )
 
 /*inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String): T {

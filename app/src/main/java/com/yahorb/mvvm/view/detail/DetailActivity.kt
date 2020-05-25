@@ -38,7 +38,7 @@ class DetailActivity : BaseActivity() {
             if (this.model != null) {
                 displayDetail(this.model)
             } else {
-                displayError(error)
+                onError(error)
             }
         }
     }

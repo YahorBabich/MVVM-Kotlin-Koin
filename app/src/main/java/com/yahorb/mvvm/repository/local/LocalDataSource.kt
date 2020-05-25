@@ -1,6 +1,6 @@
 package com.yahorb.mvvm.repository.local
 
-import com.yahorb.mvvm.repository.WeatherDatasource
+import com.yahorb.mvvm.repository.ITunesAPI
 import com.yahorb.mvvm.repository.data.geocode.Geocode
 import com.yahorb.mvvm.repository.data.geocode.Location
 import com.yahorb.mvvm.repository.data.weather.Weather
@@ -9,8 +9,8 @@ import io.reactivex.Single
 /**
  * Read json files and render weather data
  */
-class LocalDataSource(val jsonReader: JsonReader) : WeatherDatasource {
-    private val cities = HashMap<Location, String>()
+class LocalDataSource(val jsonReader: JsonReader){
+    /*private val cities = HashMap<Location, String>()
 
     init {
         cities += jsonReader.getAllLocations()
@@ -45,5 +45,5 @@ class LocalDataSource(val jsonReader: JsonReader) : WeatherDatasource {
 
     companion object {
         const val DEFAULT_CITY = "toulouse"
-    }
+    }*/
 }

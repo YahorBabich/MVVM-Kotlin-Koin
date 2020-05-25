@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_weather.*
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
-    fun displayError(error: Throwable?) {
+    fun onError(error: Throwable?) {
         Snackbar.make(weatherList, "Upps...Error has happened : $error", Snackbar.LENGTH_LONG)
             .show()
     }

@@ -22,7 +22,7 @@ class SearchActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         searchButton.setOnClickListener {
-            viewModel.searchWeather(getSearchText())
+            viewModel.search(getSearchText())
         }
 
         viewModel.apply {
@@ -33,16 +33,16 @@ class SearchActivity : BaseActivity() {
     private fun display(model: SearchModel?) {
         model?.apply {
             if (isSuccess) {
-                onWeatherSuccess()
+                onSuccess()
             } else if (error != null) {
-                displayError(error)
+                onError(error)
             }
         }
     }
 
     private fun getSearchText() = searchEditText.text.trim().toString()
 
-    private fun onWeatherSuccess() {
+    private fun onSuccess() {
         startActivity<ListActivity>(
             ARG_WEATHER_DATE to Date(),
             ARG_ADDRESS to getSearchText()
