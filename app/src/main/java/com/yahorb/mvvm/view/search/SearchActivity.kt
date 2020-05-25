@@ -6,7 +6,7 @@ import com.yahorb.mvvm.extension.observe
 import com.yahorb.mvvm.view.BaseActivity
 import com.yahorb.mvvm.view.list.ListActivity
 import com.yahorb.mvvm.view.search.model.SearchModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search.*
 import org.jetbrains.anko.startActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,7 +16,7 @@ class SearchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_search)
 
         searchButton.setOnClickListener {
             viewModel.search(getSearchText())

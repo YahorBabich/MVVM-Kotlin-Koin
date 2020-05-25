@@ -2,7 +2,10 @@ package com.yahorb.mvvm
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import com.yahorb.mvvm.di.*
+import com.yahorb.mvvm.di.databaseModules
+import com.yahorb.mvvm.di.networkModule
+import com.yahorb.mvvm.di.rxModule
+import com.yahorb.mvvm.di.vmModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
@@ -17,7 +20,7 @@ class MVVMApplication : Application() {
             androidLogger()
             androidContext(this@MVVMApplication)
             androidFileProperties()
-            modules(listOf(vmModule, storageModule, rxModule, networkModule, databaseModules))
+            modules(listOf(vmModule, rxModule, networkModule, databaseModules))
         }
 
         if (BuildConfig.DEBUG) {

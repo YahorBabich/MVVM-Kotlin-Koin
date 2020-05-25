@@ -8,19 +8,18 @@ import com.yahorb.mvvm.util.Constants.ARG_ARTIST_ITEM_ID
 import com.yahorb.mvvm.view.BaseActivity
 import com.yahorb.mvvm.view.detail.DetailActivity
 import com.yahorb.mvvm.view.list.model.ListModel
-import kotlinx.android.synthetic.main.activity_weather.*
+import kotlinx.android.synthetic.main.activity_list.*
 import org.jetbrains.anko.startActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListActivity : BaseActivity() {
 
     private lateinit var adapter: ListAdapter
-
     private val viewModel: ListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weather)
+        setContentView(R.layout.activity_list)
 
         viewModel.apply {
             observe(uiData, ::display)

@@ -7,7 +7,6 @@ import com.yahorb.mvvm.view.BaseViewModel
 import com.yahorb.mvvm.view.detail.model.DetailModel
 
 class DetailViewModel(private val artistDao: ArtistDao) : BaseViewModel() {
-
     val uiData = MutableLiveData<DetailModel>()
 
     @SuppressLint("CheckResult")

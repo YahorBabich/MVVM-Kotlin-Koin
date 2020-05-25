@@ -13,23 +13,9 @@ class SearchViewModel(
     private val repository: ITuneRepository,
     private val scheduler: SchedulerProvider,
     private val artistDao: ArtistDao
-) :
-    BaseViewModel() {
+) : BaseViewModel() {
 
     val searchEvent = SimpleLiveEvent<SearchModel>()
-
-/*    fun searchWeather(address: String) {
-        launch {
-            repository.search(address, onSuccess = { list ->
-                searchEvent.postValue(SearchModel(isSuccess = true))
-            }, onError = { err ->
-                searchEvent.postValue(SearchModel(error = err))
-            })
-            *//*.with(scheduler)
-            .subscribe( { searchEvent.postValue(SearchModel(isSuccess = true)) },
-                { err -> searchEvent.postValue(SearchModel(error = err)) })*//*
-        }
-    }*/
 
     fun search(term: String) {
         var search = term

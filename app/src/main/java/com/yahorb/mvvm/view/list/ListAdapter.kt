@@ -6,16 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.inflater
 import com.yahorb.mvvm.model.data.Artist
-import kotlinx.android.synthetic.main.item_weather.view.*
+import kotlinx.android.synthetic.main.item_artist.view.*
 
-class ListAdapter(
-    private val onClick: (Artist) -> Unit
-) : RecyclerView.Adapter<ListAdapter.ArtistHolder>() {
+class ListAdapter(private val onClick: (Artist) -> Unit) :
+    RecyclerView.Adapter<ListAdapter.ArtistHolder>() {
 
     private var artists: List<Artist> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistHolder {
-        val view = parent.inflater(R.layout.item_weather)
+        val view = parent.inflater(R.layout.item_artist)
         return ArtistHolder(view)
     }
 
