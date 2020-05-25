@@ -6,7 +6,7 @@ import com.yahorb.mvvm.repository.local.ITuneRepository
 import com.yahorb.mvvm.util.rx.SchedulerProvider
 import io.reactivex.disposables.Disposable
 
-class ITunesRepositoryImpl(
+class ITunesRepository(
     private val iTunesAPI: ITunesAPI,
     private val scheduler: SchedulerProvider
 ) : ITuneRepository {

@@ -7,4 +7,7 @@ object Constants {
 
     const val DATA_TEMPLATE_FULL: String = "yyyy-MM-dd'T'HH:mm:ss"
     const val DATA_TEMPLATE_SHORT: String = "yyyy-MM-dd"
+
+
+    const val DB_NAME: String = "artists"
 }

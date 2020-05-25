@@ -40,8 +40,10 @@ class ListAdapter(private val onClick: (Artist) -> Unit) :
         fun bind(artist: Artist) {
             item.apply {
                 itemLayout.setOnClickListener { onClick(artist) }
-                Glide.with(this).load(artist.artworkUrl100)
+                Glide.with(this)
+                    .load(artist.artworkUrl100)
                     .transform(RoundedCorners(this.context.dp(R.dimen.roundingRadius)))
+                    .placeholder(R.drawable.ic_music_video)
                     .into(image)
                 artistName.text = artist.artistName
                 data.text = "${artist.collectionPrice.toString()} ${artist.currency}"

@@ -1,6 +1,8 @@
 package com.yahorb.mvvm.view.search
 
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import com.yahorb.mvvm.BuildConfig
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.observe
 import com.yahorb.mvvm.view.BaseActivity
@@ -18,9 +20,13 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        searchButton.setOnClickListener {
-            viewModel.search(getSearchText())
+        search.setOnEditorActionListener { view, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.search(view.text.trim().toString())
+            }
+            true
         }
+        version.text = getString(R.string.app_version, BuildConfig.VERSION_NAME)
 
         viewModel.apply {
             observe(this.searchEvent, ::display)
@@ -36,8 +42,6 @@ class SearchActivity : BaseActivity() {
             }
         }
     }
-
-    private fun getSearchText() = searchEditText.text.trim().toString()
 
     private fun onSuccess() {
         startActivity<ListActivity>()

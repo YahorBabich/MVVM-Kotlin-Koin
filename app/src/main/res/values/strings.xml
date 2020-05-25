@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">iTune Skeleton</string>
+    <string name="app_name">iTunes Skeleton</string>
+    <string name="app_version">version: %s</string>
+
     <string name="collection_artist_name">Artist Name:</string>
     <string name="collection_censored_name">Censored Name:</string>
     <string name="collection_explicitness">Explicitness:</string>
@@ -15,4 +17,5 @@
     <string name="track_censored_name">Track Censored Name:</string>
     <string name="track_explicitness">Track Explicitness:</string>
     <string name="track_name">Track Name:</string>
+    <string name="search">search</string>
 </resources>
