@@ -24,7 +24,6 @@ class ListActivity : BaseActivity() {
         setContentView(R.layout.activity_list)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         viewModel.apply {
             observe(uiData, ::display)
