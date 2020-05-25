@@ -1,14 +1,12 @@
 package com.yahorb.mvvm.view
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_weather.*
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
     fun onError(error: Throwable?) {
-        Snackbar.make(weatherList, "Upps...Error has happened : $error", Snackbar.LENGTH_LONG)
-            .show()
+        Toast.makeText(this, "Upps...Error has happened : $error", Toast.LENGTH_SHORT).show()
     }
 }

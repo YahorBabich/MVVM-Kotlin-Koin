@@ -1,8 +1,8 @@
 package com.yahorb.mvvm.view.detail.model
 
-import com.yahorb.mvvm.model.data.DailyForecastModel
+import com.yahorb.mvvm.model.data.Artist
 
 data class DetailModel(
-    val model: DailyForecastModel? = null,
+    val artist: Artist? = null,
     val error: Throwable? = null
 )

@@ -1,7 +1,5 @@
 package com.yahorb.mvvm.view
 
 object Arguments {
-    const val ARG_ADDRESS: String = "ARG_ADDRESS"
-    const val ARG_WEATHER_DATE = "WEATHER_DATE"
-    const val ARG_WEATHER_ITEM_ID: String = "WEATHER_ID"
+    const val ARG_ARTIST_ITEM_ID: String = "ARG_ARTIST_ITEM_ID"
 }

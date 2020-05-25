@@ -5,33 +5,38 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yahorb.mvvm.R
 import com.yahorb.mvvm.extension.inflater
-import com.yahorb.mvvm.model.data.DailyForecastModel
+import com.yahorb.mvvm.model.data.Artist
 import kotlinx.android.synthetic.main.item_weather.view.*
 
 class ListAdapter(
-    var list: List<DailyForecastModel>,
-    private val onClick: (DailyForecastModel) -> Unit
-) : RecyclerView.Adapter<ListAdapter.WeatherResultHolder>() {
+    private val onClick: (Artist) -> Unit
+) : RecyclerView.Adapter<ListAdapter.ArtistHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherResultHolder {
+    private var artists: List<Artist> = emptyList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistHolder {
         val view = parent.inflater(R.layout.item_weather)
-        // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
-        return WeatherResultHolder(view)
+        return ArtistHolder(view)
     }
 
-    override fun onBindViewHolder(holder: WeatherResultHolder, position: Int) {
-        holder.bind(list[position])
+    fun update(artists: List<Artist>) {
+        this.artists = artists
+        notifyDataSetChanged()
     }
 
-    override fun getItemCount() = list.size
+    override fun onBindViewHolder(holder: ArtistHolder, position: Int) {
+        holder.bind(artists[position])
+    }
 
-    inner class WeatherResultHolder(private val item: View) :
+    override fun getItemCount() = artists.size
+
+    inner class ArtistHolder(private val item: View) :
         RecyclerView.ViewHolder(item) {
 
-        fun bind(dailyForecastModel: DailyForecastModel) {
-            item.weatherItemLayout.setOnClickListener { onClick(dailyForecastModel) }
-            item.weatherItemForecast.text = dailyForecastModel.forecastString
-            item.weatherItemTemp.text = dailyForecastModel.temperature
+        fun bind(artist: Artist) {
+            item.weatherItemLayout.setOnClickListener { onClick(artist) }
+            item.weatherItemForecast.text = artist.artistName
+            item.weatherItemTemp.text = artist.artistId.toString()
         }
     }
 }

@@ -1,37 +1,26 @@
 package com.yahorb.mvvm.view.list
 
-import androidx.lifecycle.MutableLiveData
-import com.yahorb.mvvm.repository.local.ITuneRepository
+import android.annotation.SuppressLint
+import com.yahorb.mvvm.database.ArtistDao
 import com.yahorb.mvvm.view.BaseViewModel
 import com.yahorb.mvvm.view.SimpleLiveEvent
 import com.yahorb.mvvm.view.list.model.ForwardModel
 import com.yahorb.mvvm.view.list.model.ListModel
 
-class ListViewModel(
-    private val weatherRepository: ITuneRepository
-) : BaseViewModel() {
+class ListViewModel(private val artistDao: ArtistDao) : BaseViewModel() {
 
     val selectEvent = SimpleLiveEvent<ForwardModel>()
-    val uiData = MutableLiveData<ListModel>()
+    val uiData = SimpleLiveEvent<ListModel>()
 
+    @SuppressLint("CheckResult")
     fun getITuneList() {
-/*        launch {
-            weatherRepository.getWeather(onSuccess = { list ->
-                uiData.value = ListModel(list)
-            }, onError = { e ->
-                uiData.value = ListModel(error = e)
-            })
-            *//*weatherRepository.getWeather()
-                .with(scheduler)
-                .subscribe({ list ->
-                    uiData.value = ListModel(list)
-                }, { e ->
-                    uiData.value = ListModel(error = e)
-                })*//*
-        }*/
+        artistDao.getAll
+            .subscribe { artists ->
+                uiData.postValue(ListModel(artists))
+            }
     }
 
-    fun selectWeatherDetail(id: String) {
+    fun details(id: String) {
         selectEvent.value = ForwardModel(id = id)
     }
 }
