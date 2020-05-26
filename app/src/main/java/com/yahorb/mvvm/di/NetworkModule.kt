@@ -3,8 +3,8 @@ package com.yahorb.mvvm.di
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.yahorb.mvvm.BuildConfig
 import com.yahorb.mvvm.repository.ITunesAPI
+import com.yahorb.mvvm.repository.ITunesRepositoryImpl
 import com.yahorb.mvvm.repository.ITunesRepository
-import com.yahorb.mvvm.repository.local.ITuneRepository
 import com.yahorb.mvvm.util.Constants.BASE_URL
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -20,7 +20,7 @@ val networkModule = module {
     factory { provideLoggingInterceptor() }
     factory { provideRetrofit(get()) }
 
-    single<ITuneRepository> { ITunesRepository(get(), get()) }
+    single<ITunesRepository> { ITunesRepositoryImpl(get(), get()) }
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {

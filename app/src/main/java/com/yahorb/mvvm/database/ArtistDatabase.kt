@@ -5,6 +5,6 @@ import androidx.room.RoomDatabase
 import com.yahorb.mvvm.model.data.Artist
 
 @Database(entities = [Artist::class], version = 7)
-abstract class AppDatabase : RoomDatabase() {
+abstract class ArtistDatabase : RoomDatabase() {
     abstract fun artistDao(): ArtistDao
 }
