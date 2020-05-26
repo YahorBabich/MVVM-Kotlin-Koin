@@ -10,6 +10,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.EmptyLogger
 
 class MVVMApplication : Application() {
 
@@ -17,7 +18,7 @@ class MVVMApplication : Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
+            if (BuildConfig.DEBUG) androidLogger() else EmptyLogger()
             androidContext(this@MVVMApplication)
             androidFileProperties()
             modules(listOf(vmModule, rxModule, networkModule, databaseModules))
