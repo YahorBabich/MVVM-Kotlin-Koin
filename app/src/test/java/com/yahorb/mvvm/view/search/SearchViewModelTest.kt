@@ -1,24 +1,32 @@
 package com.yahorb.mvvm.view.search
 
+import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import androidx.room.Room
+import com.yahorb.mvvm.database.ArtistDatabase
 import com.yahorb.mvvm.di.networkModule
 import com.yahorb.mvvm.di.rxModule
 import com.yahorb.mvvm.di.vmModule
 import com.yahorb.mvvm.model.data.Artist
 import com.yahorb.mvvm.model.data.Term
+import com.yahorb.mvvm.util.Constants
 import com.yahorb.mvvm.view.search.model.SearchModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 
 class SearchViewModelTest : AutoCloseKoinTest() {
+
+    private var context: Context = mock(Context::class.java)
 
     @Mock
     private lateinit var listObserver: Observer<SearchModel>
@@ -32,7 +40,16 @@ class SearchViewModelTest : AutoCloseKoinTest() {
     fun before() {
         MockitoAnnotations.initMocks(this)
         startKoin {
-            modules(listOf(vmModule, rxModule, networkModule))
+            modules(listOf(vmModule, rxModule, networkModule, module {
+                single {
+                    Room.databaseBuilder(
+                        context,
+                        ArtistDatabase::class.java,
+                        Constants.DB_NAME
+                    ).build()
+                }
+                single { get<ArtistDatabase>().artistDao() }
+            }))
         }
     }
 

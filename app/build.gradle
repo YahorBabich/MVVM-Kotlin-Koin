@@ -34,9 +34,9 @@ android {
         unitTests.returnDefaultValues = true
        // unitTests.returnDefaultValues = true
 
-/*        unitTests {
+        unitTests {
             includeAndroidResources = true
-        }*/
+        }
     }
 }
 
