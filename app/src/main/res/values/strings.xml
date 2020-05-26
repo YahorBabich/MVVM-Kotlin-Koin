@@ -18,5 +18,6 @@
     <string name="track_explicitness">Track Explicitness:</string>
     <string name="track_name">Track Name:</string>
     <string name="search">search</string>
-    <string name="items_not_found">Upps...Items not found</string>
+    <string name="items_not_found">Upps… Items not found</string>
+    <string name="error_happened">Upps… Error has happened:  %s</string>
 </resources>

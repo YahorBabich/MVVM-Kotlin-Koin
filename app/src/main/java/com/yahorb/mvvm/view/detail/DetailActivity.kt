@@ -54,7 +54,7 @@ class DetailActivity : BaseActivity() {
     private fun displayDetail(artist: Artist) {
         artist.apply {
             Glide.with(this@DetailActivity).load(artworkUrl100).into(image);
-            collaspingToolbarLayour.title = artist.artistName
+            collapsingToolbarLayout.title = artist.artistName
             collectionArtistValue.text = collectionArtistName
             censoredValue.text = collectionCensoredName
             collectionExplicitnessValue.text = collectionExplicitness
