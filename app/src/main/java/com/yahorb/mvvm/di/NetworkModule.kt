@@ -3,8 +3,8 @@ package com.yahorb.mvvm.di
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.yahorb.mvvm.BuildConfig
 import com.yahorb.mvvm.repository.ITunesAPI
-import com.yahorb.mvvm.repository.ITunesRepositoryImpl
 import com.yahorb.mvvm.repository.ITunesRepository
+import com.yahorb.mvvm.repository.ITunesRepositoryImpl
 import com.yahorb.mvvm.util.Constants.BASE_URL
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient

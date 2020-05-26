@@ -37,7 +37,7 @@ class SearchViewModel(
         }
     }
 
-    fun insertAll(list: List<Artist>) {
+    private fun insertAll(list: List<Artist>) {
         launch {
             artistDao.insertAll(*list.toTypedArray()).with(scheduler)
                 .subscribe({

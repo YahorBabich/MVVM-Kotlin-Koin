@@ -22,7 +22,7 @@ class SearchActivity : BaseActivity() {
 
         search.setOnEditorActionListener { view, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.search(view.text.trim().toString())
+                viewModel.search("jakson")
             }
             true
         }

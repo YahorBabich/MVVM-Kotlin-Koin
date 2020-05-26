@@ -29,9 +29,11 @@
 
         <activity
             android:name=".view.list.ListActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.detail.DetailActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
     </application>
