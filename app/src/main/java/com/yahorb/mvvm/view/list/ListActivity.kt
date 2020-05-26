@@ -22,10 +22,6 @@ class ListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        viewModel.apply {
-            observe(uiData, ::display)
-        }
-
         cta.setOnClickListener {
             onBackPressed()
         }
@@ -33,6 +29,11 @@ class ListActivity : BaseActivity() {
         adapter = ListAdapter(onItemClicked())
         list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         list.adapter = adapter
+
+        viewModel.apply {
+            observe(uiData, ::display)
+        }
+
         viewModel.getITuneList()
     }
 
